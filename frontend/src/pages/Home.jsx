@@ -61,13 +61,13 @@ const Home = () => {
                             <td className="px-4 py-2">
                               <div className="flex gap-x-4">
                                 <Link to={`/devices/details/${device._id}`}>
-                                  <BsInfoCircle className="text-2xl text-gray-500 hover:text-white" />
+                                  <BsInfoCircle className="text-2xl text-green-600 hover:text-green-300" />
                                 </Link>
                                 <Link to={`/devices/edit/${device._id}`}>
-                                  <AiOutlineEdit className="text-2xl text-gray-500 hover:text-white" />
+                                  <AiOutlineEdit className="text-2xl text-yellow-600 hover:text-yellow-300" />
                                 </Link>
                                 <Link to={`/devices/delete/${device._id}`}>
-                                  <MdOutlineDelete className="text-2xl text-gray-500 hover:text-white" />
+                                  <MdOutlineDelete className="text-2xl text-red-600 hover:text-red-300" />
                                 </Link>
                               </div>
                             </td>

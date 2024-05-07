@@ -101,7 +101,7 @@ router.put("/:id", async (req, res) => {
     );
 
     if (!result) {
-      return res.status(400).json({ message: "Device not found" });
+      return res.status(400).json({ message: "Dispositivo no encontrado" });
     }
     // const result = await Device.updateOne(
     //     { _id: id, "devices.name": req.body.devices[0].name }, // Filtrar por el ID y el nombre del dispositivo a actualizar
@@ -111,7 +111,7 @@ router.put("/:id", async (req, res) => {
     // if(result.nModified === 0){
     //     return res.status(400).json({ message: 'Device not found' });
     // }
-    return res.status(200).send({ message: "Device updated" });
+    return res.status(200).send({ message: "Dsipositivo actualizado exitosamente" });
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
@@ -125,9 +125,9 @@ router.delete("/:id", async (req, res) => {
     const result = await Device.findByIdAndDelete(id);
 
     if (!result) {
-      return res.status(404).json({ message: "Device not found" });
+      return res.status(404).json({ message: "No se encontró el dispositivo" });
     }
-    return res.status(200).send({ message: "Device deleted succesfully" });
+    return res.status(200).send({ message: "Dispositivo eliminado exitosamente" });
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
