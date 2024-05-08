@@ -96,6 +96,7 @@ router.put("/:id", async (req, res) => {
       req.body.name,
       req.body.body,
       req.body.office,
+      req.body.image,
       req.body.department,
       req.body.devices
     );
