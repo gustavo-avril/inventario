@@ -10,6 +10,7 @@ const CreateDevice = () => {
   const [name, setName] = useState('');
   const [office, setOffice] = useState('');
   const [department, setDepartment] = useState('');
+  const [image, setImage] = useState('');
   const [loading, setLoading] = useState(false);
   const [devices, setDevices] = useState([]);
   const navigate = useNavigate();
@@ -38,14 +39,13 @@ const CreateDevice = () => {
     setDevices((prevDevices) => [
       ...prevDevices,
       {
-        name: "",
+        device: "",
         model: "",
         make: "",
         serial: "",
         color: "",
         state: "",
         password: "",
-        image: "",
       },
     ]);
   };
@@ -85,24 +85,54 @@ const CreateDevice = () => {
                 <label className="text-xl mr-4 text-sky-500">Departamento</label>
                 <input type="text" value={department} onChange={(e) => setDepartment(e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500" />
               </div>
+              <div className="my-4">
+                <label className="text-xl mr-4 text-sky-500">Imagen</label>
+                <input type="text" value={image} onChange={(e) => setImage(e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500" />
+              </div>
               {devices.map((device, index) => (
-                <div key={index}>
-                  <input type="text" placeholder="Dispositivo" value={device.name} onChange={(e) => handleDeviceChange(index, "name", e.target.value)} />
-                  <input type="text" placeholder="Modelo" value={device.model} onChange={(e) => handleDeviceChange(index, "model", e.target.value)} />
-                  <input type="text" placeholder="Marca" value={device.make} onChange={(e) => handleDeviceChange(index, "make", e.target.value)} />
-                  <input type="text" placeholder="Serial" value={device.serial} onChange={(e) => handleDeviceChange(index, "serial", e.target.value)} />
-                  <input type="text" placeholder="Color" value={device.color} onChange={(e) => handleDeviceChange(index, "color", e.target.value)} />
-                  <input type="text" placeholder="Estado" value={device.state} onChange={(e) => handleDeviceChange(index, "state", e.target.value)} />
-                  <input type="text" placeholder="Contrasena" value={device.password} onChange={(e) => handleDeviceChange(index, "password", e.target.value)} />
-                  <input type="text" placeholder="Imagen" value={device.image} onChange={(e) => handleDeviceChange(index, "image", e.target.value)} />
+                <div key={index} className="flex">
+                  <div >
+                    <div className="my-4">
+                      <label className="text-xl mr-4 text-sky-500">Dispositivo</label>
+                      <input type="text" placeholder="Dispositivo" value={device.device} onChange={(e) => handleDeviceChange(index, "device", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500" />
+                    </div>
+                    <div className="my-4">
+                      <label className="text-xl mr-4 text-sky-500">Modelo</label>
+                      <input type="text" placeholder="Modelo" value={device.model} onChange={(e) => handleDeviceChange(index, "model", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                    </div>
+                    <div className="my-4">
+                      <label className="text-xl mr-4 text-sky-500">Marca</label>
+                      <input type="text" placeholder="Marca" value={device.make} onChange={(e) => handleDeviceChange(index, "make", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                    </div>
+                    <div className="my-4">
+                      <label className="text-xl mr-4 text-sky-500">Serial</label>
+                      <input type="text" placeholder="Serial" value={device.serial} onChange={(e) => handleDeviceChange(index, "serial", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="my-4">
+                      <label className="text-xl mr-4 text-sky-500">Color</label>
+                      <input type="text" placeholder="Color" value={device.color} onChange={(e) => handleDeviceChange(index, "color", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                    </div>
+                    <div className="my-4">
+                      <label className="text-xl mr-4 text-sky-500">Estado</label>
+                      <input type="text" placeholder="Estado" value={device.state} onChange={(e) => handleDeviceChange(index, "state", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                    </div>
+                    <div className="my-4">
+                      <label className="text-xl mr-4 text-sky-500">Contraseña</label>
+                      <input type="text" placeholder="Contraseña" value={device.password} onChange={(e) => handleDeviceChange(index, "password", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                    </div>
+                  </div>
                 </div>
               ))}
-              <button type="button" onClick={handleAddDevice}>
-                Agregar Dispositivo
-              </button>
-              <button className="p-2 bg-sky-500 mt-2 rounded text-white" onClick={handleSaveDevice}>
-                Guardar
-              </button>
+              <div className="d-flex flex place-content-center">
+                <button className="p-2 bg-green-500 mt-2 rounded text-white mr-2" onClick={handleAddDevice}>
+                  Agregar Dispositivo
+                </button>
+                <button className="p-2 bg-sky-500 mt-2 rounded text-white" onClick={handleSaveDevice}>
+                  Guardar
+                </button>
+              </div>
             </div>
                   
             
