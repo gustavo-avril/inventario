@@ -22,5 +22,5 @@ En el sistema se pueden ver todos los dispositivos de la empresa, así como las 
 ### Acceso
 
 1. Para acceder al sistema desde la oficina de San Martin
-2. Abrir el navegador e ir a la ip: [192.168.0.223:26500](192.168.0.223:26500)
+2. Abrir el navegador e ir a la ip: <href=192.168.0.223:26500" target="\_blank">192.168.0.223</a>
 3. El puerto de acceso es el **26500**
