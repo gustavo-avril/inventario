@@ -1,7 +1,8 @@
 # INVENTARIO AVRIL
 
 ![Avril Assistance](/logo.png)
-** 09/05/2024 quede en el minuto 42.07 del video [Link](https://www.youtube.com/watch?v=-42K44A1oMA) **
+**09/05/2024 quede en el minuto 42.07 del video [Link](https://www.youtube.com/watch?v=-42K44A1oMA)**
+
 ### Descripción
 
 En el sistema se pueden ver todos los dispositivos de la empresa, así como las computadoras, las laptops, etc y ver a quien se le asignó cada dispositivo.
