@@ -1,7 +1,7 @@
 # INVENTARIO AVRIL
 
 ![Avril Assistance](/logo.png)
-**09/05/2024 quede en el minuto 42.07 del video [Link](https://www.youtube.com/watch?v=-42K44A1oMA)**
+_09/05/2024 quede en el minuto 42.07 del video [Link](https://www.youtube.com/watch?v=-42K44A1oMA)_
 
 ### Descripción
 
