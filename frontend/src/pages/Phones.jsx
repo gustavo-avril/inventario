@@ -16,7 +16,7 @@ const Phones = () =>{
     axios
       .get("http://localhost:5555/phones/")
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data.data);
         setPhones(response.data.data);
         //setLoading(false);
       })

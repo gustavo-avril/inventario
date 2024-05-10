@@ -4,7 +4,7 @@ import { Phone } from "./../models/iPhoneModel.js";
 const router = express.Router();
 
 // Route to save a new device
-router.post("/phones", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     if (!req.body.make) {
       return res.status(400).send({ message: "Please complete the required fields" });
@@ -28,13 +28,22 @@ router.post("/phones", async (req, res) => {
 });
 
 // Get all devices
-router.get("/phones", async (req, res) => {
+router.get("/", async ( res) => {
   try {
     const phones = await Phone.find({});
 
     return res.status(200).json({
       count: phones.length,
-      data: phones,
+      data: phones.map((phone) => ({
+        id: phone._id,
+        make: phone.make,
+        serial: phone.serial,
+        location: phone.location,
+        department: phone.department,
+        number: phone.number,
+        ext: phone.ext,
+        // Add other fields as needed
+      })),
     });
   } catch (error) {
     console.log(error.message);
@@ -43,7 +52,7 @@ router.get("/phones", async (req, res) => {
 });
 
 // Get one device by ID
-router.get("/phones/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const phone = await Phone.findById(id);
@@ -56,7 +65,7 @@ router.get("/phones/:id", async (req, res) => {
 });
 
 // Update a device by ID, REVISAR XQ NO ANDA
-router.put("/phones/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     if (!req.body.make) {
       return res.status(400).send({ message: "Send all required fields." });
@@ -91,7 +100,7 @@ router.put("/phones/:id", async (req, res) => {
 });
 
 // Delete device by ID
-router.delete("/phones/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const result = await Phone.findByIdAndDelete(id);
