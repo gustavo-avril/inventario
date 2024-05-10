@@ -6,7 +6,7 @@ import logo from '../img/logo.png';
 
 
 const Sidebar = () => {
-  return (  
+  return (
     <div className="fixed flex flex-col left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
       <div className="overflow-y-auto overflow-x-hidden flex flex-col flex-grow">
         <img src={logo} alt="Logo Avril" />
@@ -20,31 +20,7 @@ const Sidebar = () => {
             </a>
           </li>
           <li>
-            <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-              <span className="inline-flex justify-center items-center ml-4">
-                  <HiOutlineDesktopComputer />
-              </span>
-              <span className="ml-2 tracking-wide truncate">Computadoras</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-              <span className="inline-flex justify-center items-center ml-4">
-                  <IoIosLaptop />
-              </span>
-              <span className="ml-2 tracking-wide truncate">Notebooks</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-              <span className="inline-flex justify-center items-center ml-4">
-                  <RiCellphoneFill />
-              </span>
-              <span className="ml-2 tracking-wide truncate">Celulares</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+            <a href="/phones" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
               <span className="inline-flex justify-center items-center ml-4">
                   <BsTelephone />
               </span>

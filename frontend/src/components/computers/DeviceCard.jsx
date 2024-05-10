@@ -6,11 +6,10 @@ import { RiHomeOfficeLine } from "react-icons/ri";
 import { FaPeopleLine } from "react-icons/fa6";
 import { LiaUserTagSolid } from "react-icons/lia";
 
-
 const DeviceCard = ({ devices }) => {
   return (
     <div className="grid sm:grid-cols-2 log:grid-cols-3 xl:grid-cols-4">
-      {devices.map((item) => (
+      {devices.filter(item => item.device === 'computer').map((item) => (
         <div key={item.id} className="border-2 border-gray-400 rounded-lg px-4 py-2 m-4 relative hover:shadow-lg">
           <div className="flex justify-center">
             <img src={item.image}  alt={item.name}/>

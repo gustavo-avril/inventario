@@ -15,27 +15,28 @@ const DeviceTable = ({ devices }) => {
         </tr>
       </thead>
       <tbody>
+
         {devices
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .map((device, index) => (
+          .filter(item => item.device === 'computer')
+          .map((item, index) => (
             <tr
               key={index}
               className=" font-semibold tracking-wide text-left text-gray-300 border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
             >
               <td className="px-4 py-2">
-                <Link to={`/devices/details/${device._id}`}>{device.name}</Link>
+                <Link to={`/devices/details/${item._id}`}>{item.name}</Link>
               </td>
-              <td className="px-4 py-2">{device.office}</td>
-              <td className="px-4 py-2">{device.department}</td>
+              <td className="px-4 py-2">{item.office}</td>
+              <td className="px-4 py-2">{item.department}</td>
               <td className="px-4 py-2">
                 <div className="flex gap-x-4">
-                  <Link to={`/devices/details/${device._id}`}>
+                  <Link to={`/devices/details/${item._id}`}>
                     <BsInfoCircle className="text-2xl text-green-600 hover:text-green-300" />
                   </Link>
-                  <Link to={`/devices/edit/${device._id}`}>
+                  <Link to={`/devices/edit/${item._id}`}>
                     <AiOutlineEdit className="text-2xl text-yellow-600 hover:text-yellow-300" />
                   </Link>
-                  <Link to={`/devices/delete/${device._id}`}>
+                  <Link to={`/devices/delete/${item._id}`}>
                     <MdOutlineDelete className="text-2xl text-red-600 hover:text-red-300" />
                   </Link>
                 </div>
