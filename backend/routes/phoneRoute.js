@@ -12,9 +12,9 @@ router.post("/", async (req, res) => {
     const newPhone = {
       make: req.body.make,
       serial: req.body.serial,
-      number: req.body.number,
       location: req.body.location,
       department: req.body.department,
+      number: req.body.number,
       ext: req.body.ext,
     };
 
@@ -28,23 +28,23 @@ router.post("/", async (req, res) => {
 });
 
 // Get all devices
-router.get("/", async ( res) => {
+router.get("/", async (req, res) => {
   try {
     const phones = await Phone.find({});
-
-    return res.status(200).json({
-      count: phones.length,
-      data: phones.map((phone) => ({
-        id: phone._id,
-        make: phone.make,
-        serial: phone.serial,
-        location: phone.location,
-        department: phone.department,
-        number: phone.number,
-        ext: phone.ext,
-        // Add other fields as needed
-      })),
-    });
+    return res.status(200).json(phones);
+    // return res.status(200).json({
+    //   count: phones.length,
+    //   data: phones.map((phone) => ({
+    //     id: phone._id,
+    //     make: phone.make,
+    //     serial: phone.serial,
+    //     location: phone.location,
+    //     department: phone.department,
+    //     number: phone.number,
+    //     ext: phone.ext,
+    //     // Add other fields as needed
+    //   })),
+    //});
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
@@ -73,12 +73,15 @@ router.put("/:id", async (req, res) => {
     const { id } = req.params;
     const result = await Phone.findByIdAndUpdate(
       id,
-      req.body.make,
-      req.body.serial,
-      req.body.number,
-      req.body.location,
-      req.body.department,
-      req.body.ext,
+      {
+        make: req.body.make,
+        serial: req.body.serial,
+        number: req.body.number,
+        location: req.body.location,
+        department: req.body.department,
+        ext: req.body.ext,
+      },
+      { new: true }
     );
 
     if (!result) {

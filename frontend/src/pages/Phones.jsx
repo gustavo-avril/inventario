@@ -1,28 +1,30 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-//import Spinner from "../components/Spinner";
+import Spinner from "../components/Spinner";
 import Sidebar from "../components/Sidebar";
 import { Link } from "react-router-dom";
-import { MdOutlineAddBox } from "react-icons/md";
+import { BsInfoCircle } from "react-icons/bs";
+import { AiOutlineEdit } from "react-icons/ai";
+import { MdOutlineDelete } from "react-icons/md";
 //import { CiGrid41 } from "react-icons/ci";
 //import { FaList } from "react-icons/fa";
 
 const Phones = () =>{
   const [phones, setPhones] = useState([]);
-  //const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   //const [showType, setShowType] = useState("table");
   useEffect(() => {
-    //setLoading(true);
+    setLoading(true);
     axios
       .get("http://localhost:5555/phones/")
       .then((response) => {
-        console.log(response.data.data);
-        setPhones(response.data.data);
-        //setLoading(false);
+        setPhones(response.data);
+        //console.log(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
-        //setLoading(false);
+        setLoading(false);
       });
   }, []);
   return(
@@ -33,31 +35,50 @@ const Phones = () =>{
         <div className="mt-4 mx-4">
           <div className="w-full overflow-hidden rounded-lg shadow-xs">
             <div className="w-full overflow-x-auto">
-              <>
-                <div className="w-full flex justify-between text-right pb-2">
-                  <div className="flex">
-                    Nuevo Dispositivo
-                    <Link to="/devices/create/" className="pl-2">
-                      <MdOutlineAddBox className="text-2xl text-gray-500 hover:text-white" />
-                    </Link>
-                  </div>
-                  {/* <div>
-                    <button className="pr-2 text-2xl text-gray-500 hover:text-white " onClick={() => setShowType("table")}>
-                      <FaList />
-                    </button>
-                    <button className="text-2xl text-gray-500 hover:text-white" onClick={() => setShowType("card")}>
-                      <CiGrid41 />
-                    </button>
-                  </div> */}
-                </div>
-              </>
+            {loading ? (<Spinner />) : (
+            <table className="w-full">
+              <thead>
+                <tr className="text-sm font-semibold tracking-wide text-left text-gray-400 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                  <th className="px-4 py-3">Marca</th>
+                  <th className="px-4 py-3">Numero</th>
+                  <th className="px-4 py-3">Departamento</th>
+                  <th className="px-4 py-3">Oficina</th>
+                  <th className="px-4 py-3">Interno</th>
+                  <th className="px-4 py-3">Serial</th>
+                  <th className="px-4 py-3">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
                 {phones
-                  .map((phone) => (
-                    <>
-                      <div>{phone._id} </div>
-                      <div>{phone.make} </div>
-                    </>
-                ))}
+                  .map((phone, index) => (
+                    <tr
+                      key={index}
+                      className=" font-semibold tracking-wide text-left text-gray-300 border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+                    >
+                      <td className="px-4 py-2">{phone.make}</td>
+                      <td className="px-4 py-2">{phone.number}</td>
+                      <td className="px-4 py-2">{phone.department}</td>
+                      <td className="px-4 py-2">{phone.location}</td>
+                      <td className="px-4 py-2">{phone.ext}</td>
+                      <td className="px-4 py-2">{phone.serial}</td>
+                      <td className="px-4 py-2">
+                        <div className="flex gap-x-4">
+                          <Link to={`/phones/create/${phone._id}`}>
+                            <BsInfoCircle className="text-2xl text-green-600 hover:text-green-300" />
+                          </Link>
+                          <Link to={`/phones/edit/${phone._id}`}>
+                            <AiOutlineEdit className="text-2xl text-yellow-600 hover:text-yellow-300" />
+                          </Link>
+                          <Link to={`/phones/delete/${phone._id}`}>
+                            <MdOutlineDelete className="text-2xl text-red-600 hover:text-red-300" />
+                          </Link>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+            )}
             </div>
           </div>
         </div>

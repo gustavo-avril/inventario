@@ -98,11 +98,27 @@ const EditDevice = () => {
               </div>
               <div className="my-4">
                 <label className="text-xl mr-4 text-sky-500">Oficina</label>
-                <input type="text" value={office} onChange={(e) => setOffice(e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500" />
+                <select value={office} onChange={(e) => setOffice(e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500">
+                  <option value="Puerto Madero">Puerto Madero</option>
+                  <option value="San Martin">San Martin</option>
+                  <option value="Cordoba">Córdoba</option>
+                  <option value="Mar del Plata">Mar del Plata</option>
+                  <option value="Mendoza">Mendoza</option>
+                  <option value="Posadas">Posadas</option>
+                  <option value="Rosario">Rosario</option>
+                </select>
               </div>
               <div className="my-4">
                 <label className="text-xl mr-4 text-sky-500">Departamento</label>
-                <input type="text" value={department} onChange={(e) => setDepartment(e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500" />
+                <select value={department} onChange={(e) => setDepartment(e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500">
+                    <option value="Administracion">Administración</option>
+                    <option value="Asistencias">Asistencias</option>
+                    <option value="Comerciales">Comerciales</option>
+                    <option value="Emisiones">Emisiones</option>
+                    <option value="IT">IT</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="RRHH">RRHH</option>
+                </select>
               </div>
               <div className="my-4">
                 <label className="text-xl mr-4 text-sky-500">Imagen</label>

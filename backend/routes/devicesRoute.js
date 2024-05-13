@@ -93,12 +93,15 @@ router.put("/:id", async (req, res) => {
     const { id } = req.params;
     const result = await Device.findByIdAndUpdate(
       id,
-      req.body.name,
-      req.body.body,
-      req.body.office,
-      req.body.image,
-      req.body.department,
-      req.body.devices
+      {
+        name: req.body.name,
+        body: req.body.body,
+        office: req.body.office,
+        image: req.body.image,
+        department: req.body.department,
+        devices: req.body.devices,
+      },
+      { new: true }
     );
 
     if (!result) {

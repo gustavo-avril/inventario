@@ -7,7 +7,7 @@ const phoneSchema = mongoose.Schema(
       required: true,
     },
     serial: {
-      type: String,
+      type: Number,
       required: true,
     },
     location: {
@@ -19,17 +19,17 @@ const phoneSchema = mongoose.Schema(
       required: true,
     },
     number: {
-      type: String,
+      type: Number,
       required: true,
     },
     ext: {
-      type: String,
+      type: Number,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,
   }
-)
+);
 
-export const Phone = mongoose.model('Phone', phoneSchema);
+export const Phone = mongoose.model("Phone", phoneSchema);
