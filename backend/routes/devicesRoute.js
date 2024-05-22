@@ -13,6 +13,7 @@ router.post("/", async (req, res) => {
       name: req.body.name,
       office: req.body.office,
       department: req.body.department,
+      number: req.body.number,
       devices: req.body.devices,
     };
 
@@ -99,6 +100,7 @@ router.put("/:id", async (req, res) => {
         office: req.body.office,
         image: req.body.image,
         department: req.body.department,
+        number: req.body.number,
         devices: req.body.devices,
       },
       { new: true }

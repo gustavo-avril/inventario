@@ -13,6 +13,8 @@ const CreatePhone = () => {
   const [location, setLocation] = useState('');
   const [serial, setSerial] = useState('');
   const [ext, setExt] = useState('');
+  const [name, setName] = useState('');
+  const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleSavePhone = () => {
@@ -23,6 +25,8 @@ const CreatePhone = () => {
       location,
       serial,
       ext,
+      name,
+      status
     };
     setLoading(true);
     axios
@@ -37,6 +41,13 @@ const CreatePhone = () => {
       console.log(error);
     })
   };
+
+  const phoneStatus = [
+    {value: 'En Uso', label: 'En Uso'},
+    {value: 'En Stock', label: 'En Stock'},
+    {value: 'Danado', label: 'Dañado'},
+    {value: 'Desactivado', label: 'Desactivado'},
+  ];
 
   return (
     <div className="{ 'dark': isDark }">
@@ -68,10 +79,10 @@ const CreatePhone = () => {
                   <label className="text-xl mr-4 text-sky-500">Oficina</label>
                   <select value={location} onChange={(e) => setLocation(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl">
                     <option value="Puerto Madero">Puerto Madero</option>
-                    <option value="San Martin">San Martin</option>
+                    <option value="San Martin">San Martín</option>
                     <option value="Mar del Plata">Mar del Plata</option>
                     <option value="Rosario">Rosario</option>
-                    <option value="Cordoba">Cordoba</option>
+                    <option value="Cordoba">Córdoba</option>
                     <option value="Mendoza">Mendoza</option>
                     <option value="Posadas">Posadas</option>
                   </select>
@@ -81,22 +92,36 @@ const CreatePhone = () => {
                   <select value={department} onChange={(e) => setDepartment(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl">
                     <option value="RRHH">RRHH</option>
                     <option value="Asistencias">Asistencias</option>
-                    <option value="Administracion">Administracion</option>
-                    <option value="Emisiones">RRHH</option>
-                    <option value="Comerciales">RRHH</option>
+                    <option value="Administracion">Administración</option>
+                    <option value="Emisiones">Emisiones</option>
+                    <option value="Comerciales">Comerciales</option>
                     <option value="IT">IT</option>
                     <option value="Marketing">Marketing</option>
                   </select> 
                 </div>
               </div>
               <div className="flex w-full place-content-center">
+              <div className="p-2 my-2 w-1/2">
+                  <label className="text-xl mr-4 text-sky-500">Usuario</label>
+                  <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
+                </div>
                 <div className="p-2 my-2 w-1/2">
-                    <label className="text-xl mr-4 text-sky-500">Numero</label>
-                    <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
-                  </div>
+                  <label className="text-xl mr-4 text-sky-500">Numero</label>
+                  <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
+                </div>
                 <div className="p-2 my-2 w-1/2">
                   <label className="text-xl mr-4 text-sky-500">Interno</label>
                   <input type="text" value={ext} onChange={(e) => setExt(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
+                </div>
+                <div className="p-2 my-2 w-1/2">
+                  <label className="text-xl mr-4 text-sky-500">Estado</label>
+                  <select value={status} onChange={(e) => setStatus(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl">
+                    {phoneStatus.map((status) => (
+                      <option key={status.value} value={status.value}>    
+                        {status.label}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <div className="d-flex flex place-content-center">

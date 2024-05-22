@@ -11,6 +11,7 @@ const EditDevice = () => {
   const [office, setOffice] = useState('');
   const [department, setDepartment] = useState('');
   const [image, setImage] = useState('');
+  const [number, setNumber] = useState('');
   const [devices, setDevices] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const EditDevice = () => {
       setName(response.data.name);
       setOffice(response.data.office);
       setDepartment(response.data.department);
+      setNumber(response.data.number);
       setImage(response.data.image);
       setDevices(response.data.devices);
       setLoading(false);
@@ -37,6 +39,7 @@ const EditDevice = () => {
       name,
       office,
       department,
+      number,
       image,
       devices,
     };
@@ -94,11 +97,11 @@ const EditDevice = () => {
               </div>
               <div className="my-4">
                 <label className="text-xl mr-4 text-sky-500">Nombre</label>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500" />
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
               </div>
               <div className="my-4">
                 <label className="text-xl mr-4 text-sky-500">Oficina</label>
-                <select value={office} onChange={(e) => setOffice(e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500">
+                <select value={office} onChange={(e) => setOffice(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl">
                   <option value="Puerto Madero">Puerto Madero</option>
                   <option value="San Martin">San Martin</option>
                   <option value="Cordoba">Córdoba</option>
@@ -110,7 +113,7 @@ const EditDevice = () => {
               </div>
               <div className="my-4">
                 <label className="text-xl mr-4 text-sky-500">Departamento</label>
-                <select value={department} onChange={(e) => setDepartment(e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500">
+                <select value={department} onChange={(e) => setDepartment(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl">
                     <option value="Administracion">Administración</option>
                     <option value="Asistencias">Asistencias</option>
                     <option value="Comerciales">Comerciales</option>
@@ -121,41 +124,45 @@ const EditDevice = () => {
                 </select>
               </div>
               <div className="my-4">
+                <label className="text-xl mr-4 text-sky-500">Numero</label>
+                <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
+              </div>
+              <div className="my-4">
                 <label className="text-xl mr-4 text-sky-500">Imagen</label>
-                <input type="text" value={image} onChange={(e) => setImage(e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500" />
+                <input type="text" value={image} onChange={(e) => setImage(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
               </div>
               {devices.map((device, index) => (
                 <div key={index} className="flex">
                   <div >
                     <div className="my-4">
                       <label className="text-xl mr-4 text-sky-500">Dispositivo</label>
-                      <input type="text" placeholder="Dispositivo" value={device.device} onChange={(e) => handleDeviceChange(index, "device", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500" />
+                      <input type="text" placeholder="Dispositivo" value={device.device} onChange={(e) => handleDeviceChange(index, "device", e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
                     </div>
                     <div className="my-4">
                       <label className="text-xl mr-4 text-sky-500">Modelo</label>
-                      <input type="text" placeholder="Modelo" value={device.model} onChange={(e) => handleDeviceChange(index, "model", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                      <input type="text" placeholder="Modelo" value={device.model} onChange={(e) => handleDeviceChange(index, "model", e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl"/>
                     </div>
                     <div className="my-4">
                       <label className="text-xl mr-4 text-sky-500">Marca</label>
-                      <input type="text" placeholder="Marca" value={device.make} onChange={(e) => handleDeviceChange(index, "make", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                      <input type="text" placeholder="Marca" value={device.make} onChange={(e) => handleDeviceChange(index, "make", e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl"/>
                     </div>
                     <div className="my-4">
                       <label className="text-xl mr-4 text-sky-500">Serial</label>
-                      <input type="text" placeholder="Serial" value={device.serial} onChange={(e) => handleDeviceChange(index, "serial", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                      <input type="text" placeholder="Serial" value={device.serial} onChange={(e) => handleDeviceChange(index, "serial", e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl"/>
                     </div>
                   </div>
                   <div>
                     <div className="my-4">
                       <label className="text-xl mr-4 text-sky-500">Color</label>
-                      <input type="text" placeholder="Color" value={device.color} onChange={(e) => handleDeviceChange(index, "color", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                      <input type="text" placeholder="Color" value={device.color} onChange={(e) => handleDeviceChange(index, "color", e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl"/>
                     </div>
                     <div className="my-4">
                       <label className="text-xl mr-4 text-sky-500">Estado</label>
-                      <input type="text" placeholder="Estado" value={device.state} onChange={(e) => handleDeviceChange(index, "state", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                      <input type="text" placeholder="Estado" value={device.state} onChange={(e) => handleDeviceChange(index, "state", e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl"/>
                     </div>
                     <div className="my-4">
                       <label className="text-xl mr-4 text-sky-500">Contraseña</label>
-                      <input type="text" placeholder="Contraseña" value={device.password} onChange={(e) => handleDeviceChange(index, "password", e.target.value)} className="border-2 border-gray-500 px-4 py-4 w-full text-sky-500"/>
+                      <input type="text" placeholder="Contraseña" value={device.password} onChange={(e) => handleDeviceChange(index, "password", e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl"/>
                     </div>
                   </div>
                 </div>

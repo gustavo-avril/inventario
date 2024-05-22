@@ -11,6 +11,7 @@ const DeviceTable = ({ devices }) => {
           <th className="px-4 py-3">Nombre</th>
           <th className="px-4 py-3">Oficina</th>
           <th className="px-4 py-3">Departamento</th>
+          <th className="px-4 py-3">Numero</th>
           <th className="px-4 py-3">Acciones</th>
         </tr>
       </thead>
@@ -27,6 +28,7 @@ const DeviceTable = ({ devices }) => {
               </td>
               <td className="px-4 py-2">{device.office}</td>
               <td className="px-4 py-2">{device.department}</td>
+              <td className="px-4 py-2">{device.number}</td>
               <td className="px-4 py-2">
                 <div className="flex gap-x-4">
                   <Link to={`/devices/details/${device._id}`}>

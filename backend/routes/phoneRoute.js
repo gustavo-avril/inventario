@@ -16,6 +16,8 @@ router.post("/", async (req, res) => {
       department: req.body.department,
       number: req.body.number,
       ext: req.body.ext,
+      name: req.body.name,
+      status: req.body.status,
     };
 
     const phone = await Phone.create(newPhone);
@@ -64,7 +66,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Update a device by ID, REVISAR XQ NO ANDA
+// Update a device by ID
 router.put("/:id", async (req, res) => {
   try {
     if (!req.body.make) {
@@ -80,6 +82,8 @@ router.put("/:id", async (req, res) => {
         location: req.body.location,
         department: req.body.department,
         ext: req.body.ext,
+        name: req.body.name,
+        status: req.body.status,
       },
       { new: true }
     );

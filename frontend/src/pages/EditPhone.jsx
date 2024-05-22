@@ -13,6 +13,8 @@ const EditPhone = () => {
   const [location, setLocation] = useState('');
   const [serial, setSerial] = useState('');
   const [ext, setExt] = useState('');
+  const [name, setName] = useState('');
+  const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -26,6 +28,8 @@ const EditPhone = () => {
       setLocation(response.data.location);
       setSerial(response.data.serial);
       setExt(response.data.ext);
+      setName(response.data.name);
+      setStatus(response.data.status);
       setLoading(false);
     }).catch((error) => {
       setLoading(false);
@@ -41,6 +45,8 @@ const EditPhone = () => {
       location,
       serial,
       ext,
+      name,
+      status,
     };
     setLoading(true);
     axios
@@ -56,6 +62,12 @@ const EditPhone = () => {
       console.log(error);
     })
   };
+
+  const phoneStatus = [
+    {value: 'En Uso', label: 'En Uso'},
+    {value: 'En Stock', label: 'En Stock'},
+    {value: 'Danado', label: 'Dañado'},
+  ];
 
   return (
     <div className="{ 'dark': isDark }">
@@ -109,13 +121,27 @@ const EditPhone = () => {
                 </div>
               </div>
               <div className="flex w-full place-content-center">
+              <div className="p-2 my-2 w-1/2">
+                  <label className="text-xl mr-4 text-sky-500">Usuario</label>
+                  <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
+                </div>
                 <div className="p-2 my-2 w-1/2">
-                    <label className="text-xl mr-4 text-sky-500">Numero</label>
-                    <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
-                  </div>
+                  <label className="text-xl mr-4 text-sky-500">Numero</label>
+                  <input type="text" value={number} onChange={(e) => setNumber(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
+                </div>
                 <div className="p-2 my-2 w-1/2">
                   <label className="text-xl mr-4 text-sky-500">Interno</label>
                   <input type="text" value={ext} onChange={(e) => setExt(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl" />
+                </div>
+                <div className="p-2 my-2 w-1/2">
+                  <label className="text-xl mr-4 text-sky-500">Estado</label>
+                  <select value={status} onChange={(e) => setStatus(e.target.value)} className="px-4 py-4 w-full text-sky-500 rounded-xl">
+                    {phoneStatus.map((status) => (
+                      <option key={status.value} value={status.value}>    
+                        {status.label}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <div className="d-flex flex place-content-center">
